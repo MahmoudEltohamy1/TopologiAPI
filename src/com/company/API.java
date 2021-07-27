@@ -1,9 +1,10 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import com.company.TopologyModel.Topology;
+
+import java.io.*;
+
+import static com.company.Main.topologyHashMap;
 
 public class API {
     public API()
@@ -12,6 +13,7 @@ public class API {
     }
     private String jsonString;
     public String readJSON(String fileName){
+
         File file = new File(fileName);
         try (BufferedReader br = new BufferedReader(new FileReader(file)))
         {
@@ -27,7 +29,18 @@ public class API {
 }
 
 
-    public void writeJSON(int topologyID){
+    public void writeJSON(String topologyID)  {
+
+        Topology topologyToBeWritten=topologyHashMap.get(topologyID);
+        JsonService jsonService=new JsonService();
+        String topologyJson=jsonService.toJson(topologyToBeWritten);
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("topologyOut.txt"));
+            writer.write(topologyJson);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     public void queryTopologies(){
