@@ -11,4 +11,11 @@ public class Topology {
     public String id;
     public List<Component> components;
 
+    @Override
+    public String toString() {
+        return "Topology{" +
+                "id='" + id + '\'' +
+                ","+'\n'+" components=" + components +
+                '}'+'\n';
+    }
 }

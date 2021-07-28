@@ -7,4 +7,13 @@ public class CircuitElement {
     public Double defaultValue;
     public Integer min;
     public Integer max;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "defaultValue=" + defaultValue +
+                ", min=" + min +
+                ", max=" + max +
+                '}';
+    }
 }

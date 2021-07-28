@@ -18,5 +18,15 @@ public class Component {
     public CircuitElement m1;// nmos
     public NetList netlist;
 
-    /*public String netlist le kol resistance*/
+    @Override
+    public String toString() {
+        return "Component{" +
+                "type='" + type + '\'' +
+                ", id='" + id + '\'' +
+                ", resistance=" + resistance +
+                ", p1=" + p1 +
+                ", m1=" + m1 +
+                ", netlist=" + netlist +
+                '}';
+    }
 }
