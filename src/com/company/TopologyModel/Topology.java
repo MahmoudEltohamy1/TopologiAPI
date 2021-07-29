@@ -15,7 +15,7 @@ public class Topology {
     public String toString() {
         return "Topology{" +
                 "id='" + id + '\'' +
-                ","+'\n'+" components=" + components +
+                ", components=" + components +
                 '}'+'\n';
     }
 }

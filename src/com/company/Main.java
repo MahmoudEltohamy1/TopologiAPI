@@ -4,6 +4,7 @@ import com.company.TopologyModel.CircuitElement;
 import com.company.TopologyModel.NetList;
 import com.company.TopologyModel.Topology;
 
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,12 @@ static HashMap<String,Topology> topologyHashMap= new HashMap<String,Topology>();
     public static void main(String[] args) {
 	// write your code here
         API api=new API();
-        String result = api.readJSON("topology.txt");
+        String result = null;
+        try {
+            result = api.readJSON("topology.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         System.out.println(result);
         JsonService jsonService=new JsonService();
         Topology topology=jsonService.fromJson(result, Topology.class);

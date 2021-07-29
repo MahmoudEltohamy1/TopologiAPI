@@ -17,16 +17,19 @@ public class API {
     }
     private String jsonString;
 
-    public String readJSON(String fileName){
+    public String readJSON(String fileName) throws FileNotFoundException {
 
         File file = new File(fileName);
+        if(fileName==null)
+            throw new NullPointerException();
         try (BufferedReader br = new BufferedReader(new FileReader(file)))
         {
             String line;
             while ((line = br.readLine()) != null) {
                 jsonString+=line;
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
         return jsonString;
@@ -35,7 +38,8 @@ public class API {
 
 
     public void writeJSON(String topologyID)  {
-
+        if(topologyHashMap.get(topologyID)==null)
+            throw new NullPointerException();
         Topology topologyToBeWritten=topologyHashMap.get(topologyID);
         JsonService jsonService=new JsonService();
         String topologyJson=jsonService.toJson(topologyToBeWritten);
@@ -87,7 +91,9 @@ public class API {
         return devicesWithNetListNode;
     }
 
-    public void deleteTopology(int topologyID){
+    public void deleteTopology(String topologyID){
+        if(!(topologyHashMap.containsKey(topologyID)))
+            throw new NullPointerException();
         topologyHashMap.remove(topologyID);
     }
 
