@@ -22,7 +22,6 @@ public class TestAPI {
         try {
             String result = api.readJSON(null);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         }
 
     }

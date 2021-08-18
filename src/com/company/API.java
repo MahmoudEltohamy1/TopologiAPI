@@ -38,7 +38,7 @@ public class API {
             }
         }
         catch (IOException e) {
-            e.printStackTrace();
+
         }
         return jsonString;
 
@@ -101,7 +101,6 @@ public class API {
                 circuitElementList.add(topology.components.get(i).p1);
             else if(topology.components.get(i).m1!=null)
                 circuitElementList.add(topology.components.get(i).m1);
-
         }
         return circuitElementList;
     }
